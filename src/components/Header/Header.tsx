@@ -1,0 +1,47 @@
+"use client";
+import React, { useState } from "react";
+import SocialIcons from "./SocialIcons";
+import Feedback from "./Feedback";
+import Sidebar from "./Sidebar";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+
+const Header = () => {
+  const route = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="relative w-full">
+      <header className="py-6 px-6 flex items-center justify-between font-normal text-[14px] tracking-widest leading-[16px] font-sans pt-4 pr-6">
+        {/* Left Section: Sidebar and Social Icons */}
+        <div className="flex items-center space-x-2">
+          <Sidebar setIsOpen={setIsOpen} />
+          <div className="hidden sm:block">
+            <SocialIcons />
+          </div>
+        </div>
+
+        <div className="flex items-center space-x-1">
+          <Image
+            src={"/logo1.png"}
+            alt={"Logo"}
+            width={60}
+            height={60}
+            className={`w-8 h-8  ${route === "/contact" && "filter invert"}`}
+          />
+          <Image
+            src={"/logoText.png"}
+            alt={"Logo Text"}
+            width={120}
+            height={50}
+            className={`w-auto h-7 ${route === "/contact" && "filter invert"}`}
+          />
+        </div>
+        <div>
+          <Feedback setIsOpen={setIsOpen} isOpen={isOpen} />
+        </div>
+      </header>
+    </div>
+  );
+};
+
+export default Header;
