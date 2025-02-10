@@ -1,0 +1,15 @@
+import About from "@/components/About/About";
+import { ITeamInfo } from "@/components/common/interface";
+import React from "react";
+
+const page = async () => {
+  const data = await fetch(`${process.env.BASE_URL}/team`);
+  const teamInfo: ITeamInfo[] = await data.json();
+  return (
+    <div>
+      <About teamInfo={teamInfo} />
+    </div>
+  );
+};
+
+export default page;
