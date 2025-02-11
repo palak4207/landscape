@@ -8,7 +8,7 @@ interface IParams {
   };
 }
 
-const page = async ({ params }: IParams) => {
+const page = async ({ params }: any) => {
   const BASE_URL = process.env.BASE_URL;
   const projectName = await params;
   const project = await fetch(`${BASE_URL}/projects?name=${projectName.slugs}`);

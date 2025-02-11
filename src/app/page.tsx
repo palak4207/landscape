@@ -7,7 +7,7 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <Projects data={data} />
+      {data?.length > 0 && <Projects data={data} />}
     </>
   );
 }

@@ -5,11 +5,7 @@ import React from "react";
 const page = async () => {
   const data = await fetch(`${process.env.BASE_URL}/team`);
   const teamInfo: ITeamInfo[] = await data.json();
-  return (
-    <div>
-      <About teamInfo={teamInfo} />
-    </div>
-  );
+  return <div>{teamInfo?.length > 0 && <About teamInfo={teamInfo} />}</div>;
 };
 
 export default page;

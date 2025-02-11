@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import { connectToDatabase } from "@/../lib/mongodb";
 
 // Handle GET request
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     const { db } = await connectToDatabase();
     const items = await db.collection("feedbacks").find({}).toArray();
