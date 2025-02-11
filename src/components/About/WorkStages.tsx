@@ -88,10 +88,10 @@ const WorkStages = () => {
                     // Large screens (lg)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-24vw) rotate(-${angle}deg)`;
                   }
-                  if (window.innerWidth >= 1024) {
+                  if (window && window.innerWidth >= 1024) {
                     // Large screens (lg)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-42vw) rotate(-${angle}deg)`;
-                  } else if (window.innerWidth >= 768) {
+                  } else if (window && window.innerWidth >= 768) {
                     // Medium screens (md)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-40vw) rotate(-${angle}deg)`;
                   } else {
