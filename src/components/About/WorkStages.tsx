@@ -84,7 +84,7 @@ const WorkStages = () => {
                 top: "50%",
                 left: "50%",
                 transform: (() => {
-                  if (window.innerWidth >= 1568) {
+                  if (window && window.innerWidth >= 1568) {
                     // Large screens (lg)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-24vw) rotate(-${angle}deg)`;
                   }
