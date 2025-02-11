@@ -6,6 +6,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 const WorkStages = () => {
   const [progress, setProgress] = useState(0);
+  const [isClient, setIsClient] = useState(false);
   const stages = [
     "PRESENTATION",
     "DESIGN CONTRACT",
@@ -22,6 +23,7 @@ const WorkStages = () => {
     const interval = setInterval(() => {
       setProgress((prev) => (prev >= 100 ? 0 : prev + 12.5));
     }, 2000);
+    setIsClient(true);
     return () => clearInterval(interval);
   }, []);
 
@@ -39,6 +41,9 @@ const WorkStages = () => {
     image = "/path-to-image5.png";
   }
 
+  if (!isClient) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="relative flex justify-center items-center w-full h-screen px-4">
       <div
@@ -84,14 +89,14 @@ const WorkStages = () => {
                 top: "50%",
                 left: "50%",
                 transform: (() => {
-                  if (window && window.innerWidth >= 1568) {
+                  if (window.innerWidth >= 1568) {
                     // Large screens (lg)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-24vw) rotate(-${angle}deg)`;
                   }
-                  if (window && window.innerWidth >= 1024) {
+                  if (window.innerWidth >= 1024) {
                     // Large screens (lg)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-42vw) rotate(-${angle}deg)`;
-                  } else if (window && window.innerWidth >= 768) {
+                  } else if (window.innerWidth >= 768) {
                     // Medium screens (md)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-40vw) rotate(-${angle}deg)`;
                   } else {
