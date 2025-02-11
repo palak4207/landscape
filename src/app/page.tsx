@@ -1,3 +1,4 @@
+import Header from "@/components/Header/Header";
 import Projects from "@/components/Projects/Projects";
 
 export default async function Home() {
@@ -13,7 +14,13 @@ export default async function Home() {
 
   try {
     const data = await allProjects.json();
-    return <div>{data?.length > 0 && <Projects data={data} />}</div>;
+
+    return (
+      <div>
+        <Header />
+        {data?.length > 0 && <Projects data={data} />}
+      </div>
+    );
   } catch (err) {
     console.error("Error parsing JSON:", err);
     return <div>Error parsing data</div>; // Show an error message
