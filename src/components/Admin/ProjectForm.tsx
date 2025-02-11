@@ -503,7 +503,7 @@ const ProjectForm = () => {
             Banner Image URL
           </label>
           <input
-            type="url"
+            type="string"
             id="bannerImage"
             value={formData.bannerImage}
             onChange={(e) => handleChange(e, 0, 0, "bannerImage")}
@@ -542,7 +542,7 @@ const ProjectForm = () => {
                       Image URL
                     </label>
                     <input
-                      type="url"
+                      type="string"
                       id={`imageUrl-${tagIndex}-${imageIndex}`}
                       value={image.url}
                       onChange={(e) =>
