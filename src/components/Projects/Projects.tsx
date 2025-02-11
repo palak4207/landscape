@@ -52,10 +52,11 @@ const Projects = ({ data }: IProjects) => {
                 onClick={() => router.push(`/${project.projectName}`)}
               >
                 <img
-                  src={`https://landscapearchitects1-my.sharepoint.com/personal/admin_landscapearchitects1_onmicrosoft_com/_layouts/15/download.aspx?SourceUrl=/personal/admin_landscapearchitects1_onmicrosoft_com/Documents/${project?.bannerImage.replace(
-                    / /g,
-                    "%20"
-                  )}`}
+                  // src={`https://landscapearchitects1-my.sharepoint.com/personal/admin_landscapearchitects1_onmicrosoft_com/_layouts/15/download.aspx?SourceUrl=/personal/admin_landscapearchitects1_onmicrosoft_com/Documents/${project?.bannerImage.replace(
+                  //   / /g,
+                  //   "%20"
+                  // )}`}
+                  src="https://res.cloudinary.com/dxpwhaebj/image/upload/v1734769041/homebyme-homepage-gallery-9_f7gawc.jpg"
                   alt={project.projectName || "Project Image"}
                   className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
                   width={500}
