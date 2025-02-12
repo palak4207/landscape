@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import { IProject } from "../common/interface";
-import Image from "next/image";
 
 interface IProjects {
   data: IProject;
@@ -14,37 +13,42 @@ const Project = ({ data, tags }: IProjects) => {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedTaggedImage, setSelectedTaggedImage] = useState<any>([]);
+  const [loaded, setLoaded] = useState(false);
 
   const handleMarqueeClick = (tag: string) => {
     setSelectedTag(tag);
   };
 
   useEffect(() => {
-    document
-      .getElementById("carouselSection")
-      ?.scrollIntoView({ behavior: "smooth" });
-    data?.tags?.map((img) => {
-      if (img?.tagName === selectedTag) {
-        setSelectedTaggedImage(img?.images);
-      }
-    });
+    if (selectedTag) {
+      document
+        .getElementById("carouselSection")
+        ?.scrollIntoView({ behavior: "smooth" });
+      data?.tags?.map((img) => {
+        if (img?.tagName === selectedTag) {
+          setSelectedTaggedImage(img?.images);
+        }
+      });
+    }
   }, [selectedTag]);
 
   const handleNext = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex + 1) % selectedTaggedImage?.length
-    );
+    if (selectedTaggedImage?.length > 0) {
+      setCurrentIndex(
+        (prevIndex) => (prevIndex + 1) % selectedTaggedImage?.length
+      );
+    }
   };
 
   const handlePrev = () => {
-    setCurrentIndex(
-      (prevIndex) =>
-        (prevIndex - 1 + selectedTaggedImage?.length) %
-        selectedTaggedImage?.length
-    );
+    if (selectedTaggedImage?.length > 0) {
+      setCurrentIndex(
+        (prevIndex) =>
+          (prevIndex - 1 + selectedTaggedImage?.length) %
+          selectedTaggedImage?.length
+      );
+    }
   };
-
-  const [loaded, setLoaded] = useState(false);
 
   // Trigger transition after the component mounts
   useEffect(() => {
@@ -52,11 +56,13 @@ const Project = ({ data, tags }: IProjects) => {
   }, []);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      handleNext();
-    }, 5000);
+    if (selectedTag) {
+      const intervalId = setInterval(() => {
+        handleNext();
+      }, 5000);
 
-    return () => clearInterval(intervalId);
+      return () => clearInterval(intervalId);
+    }
   }, [selectedTaggedImage.length]);
 
   return (
@@ -64,9 +70,11 @@ const Project = ({ data, tags }: IProjects) => {
       <Header />
       {data && (
         <div className="relative w-full h-[calc(100vh-8rem)] overflow-hidden">
-          <Image
+          <img
             src={data?.bannerImage}
             alt={data?.bannerImage}
+            width={400}
+            height={400}
             className="w-full h-full object-cover"
           />
 
@@ -118,18 +126,24 @@ const Project = ({ data, tags }: IProjects) => {
         </div>
       </div>
 
-      {selectedTag && (
+      {selectedTag && selectedTaggedImage && (
         <div
           id="carouselSection"
           className="mt-8 px-4 py-6 bg-white w-full max-w-6xl mx-auto rounded-lg shadow-lg"
         >
           <div className="relative w-full h-[60vh] overflow-hidden rounded-lg shadow-lg">
             <div className="flex justify-center items-center h-full">
-              <Image
-                src={selectedTaggedImage[currentIndex]?.url}
-                alt={selectedTaggedImage[currentIndex]?.url}
-                className="w-full h-full object-cover transition-all duration-500 ease-in-out"
-              />
+              {selectedTaggedImage[currentIndex]?.url ? (
+                <img
+                  src={selectedTaggedImage[currentIndex]?.url}
+                  alt={selectedTaggedImage[currentIndex]?.url}
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover transition-all duration-500 ease-in-out"
+                />
+              ) : (
+                <div>Loading...</div>
+              )}
             </div>
 
             <div

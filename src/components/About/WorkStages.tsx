@@ -32,13 +32,13 @@ const WorkStages = () => {
   if (progress >= 0 && progress < 20) {
     image = "/home.jpg";
   } else if (progress >= 20 && progress < 40) {
-    image = "/path-to-image2.png";
+    image = "/home.jpg";
   } else if (progress >= 40 && progress < 60) {
     image = "/home.jpg";
   } else if (progress >= 60 && progress < 80) {
-    image = "/path-to-image4.png";
+    image = "/home.jpg";
   } else {
-    image = "/path-to-image5.png";
+    image = "/home.jpg";
   }
 
   if (!isClient) {

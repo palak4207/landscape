@@ -52,9 +52,7 @@ const Projects = ({ data }: IProjects) => {
                 onClick={() => router.push(`/${project.projectName}`)}
               >
                 <img
-                  src={
-                    "https://firebasestorage.googleapis.com/v0/b/landscape-b3f1c.firebasestorage.app/o/Test%2FPawan%20Ji%20-%20Ground%20Floor%20Front%20Bedroom%20View%232.png?alt=media&token=4bd9ea34-d061-4b9b-b03d-838bf22da2d4"
-                  }
+                  src={project?.bannerImage}
                   className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
                   width={500}
                   height={300}
@@ -65,7 +63,6 @@ const Projects = ({ data }: IProjects) => {
                     {project.projectName || "Project Title"}
                   </h2>
                   <p className="text-white mt-2 text-sm">
-                    {index}
                     {project.city || "City"} • {project.area || "Area"} •{" "}
                     {project.year || "Year"}
                   </p>

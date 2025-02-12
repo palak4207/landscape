@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
       "drive.google.com",
       "res.cloudinary.com",
       "landscapearchitects1-my.sharepoint.com",
+      "firebasestorage.googleapis.com",
     ], // Add hostnames here
   },
   /* config options here */
