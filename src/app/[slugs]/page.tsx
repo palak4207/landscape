@@ -16,9 +16,7 @@ const page = async ({ params }: any) => {
   let tags = [];
 
   if (data?.length > 0) {
-    console.log("daaa", data?.[0]);
     tags = data?.[0]?.tags?.map((tag: any) => tag.tagName).flat();
-    console.log("tagsss", tags);
   }
   return (
     <div>

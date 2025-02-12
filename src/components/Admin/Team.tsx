@@ -30,7 +30,6 @@ const Team = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/team`,
       {

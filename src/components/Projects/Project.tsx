@@ -22,7 +22,6 @@ const Project = ({ data, tags }: IProjects) => {
     document
       .getElementById("carouselSection")
       ?.scrollIntoView({ behavior: "smooth" });
-    console.log("dataaaaa", data);
     data?.tags?.map((img) => {
       if (img?.tagName === selectedTag) {
         setSelectedTaggedImage(img?.images);
@@ -59,8 +58,6 @@ const Project = ({ data, tags }: IProjects) => {
     return () => clearInterval(intervalId);
   }, [selectedTaggedImage.length]);
 
-  console.log("seeeee", selectedTaggedImage);
-
   return (
     <div className="relative w-full h-screen">
       <Header />
@@ -68,7 +65,7 @@ const Project = ({ data, tags }: IProjects) => {
         <div className="relative w-full h-[calc(100vh-8rem)] overflow-hidden">
           <img
             src={data?.bannerImage}
-            alt="Hero Background"
+            alt={data?.bannerImage}
             className="w-full h-full object-cover"
           />
 

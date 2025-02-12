@@ -338,7 +338,6 @@ const ProjectForm = () => {
     field: string
   ) => {
     const value = e.target.value;
-    console.log("vaaa", value);
     const updatedTags = [...formData.tags];
 
     if (field === "tagName") {

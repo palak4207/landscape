@@ -1,7 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import Project from "./Project";
 import { useRouter } from "next/navigation";
 import { IProject } from "../common/interface";
 
@@ -12,57 +11,6 @@ interface IProjects {
 const Projects = ({ data }: IProjects) => {
   const router = useRouter();
   const [showMore, setShowMore] = useState(false);
-  const [url, setUrl] = useState("");
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/image`);
-  //     console.log("data", res);
-  //     const data = await res.json();
-
-  //     if (data.base64) {
-  //       console.log("urlll", `data:${data.contentType};base64,${data.base64}`);
-  //       setUrl(`data:${data.contentType};base64,${data.base64}`);
-  //     }
-  //     // setUrl(data);
-  //   })();
-  // }, []);
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/image`
-        );
-
-        if (!res.ok) {
-          throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-
-        const textData = await res.text(); // Get raw text response
-        console.log("Raw Response:", textData); // Check what data looks like
-
-        let parsedData;
-        try {
-          parsedData = JSON.parse(textData); // Try parsing JSON
-        } catch (err) {
-          throw new Error("Failed to parse JSON: ");
-        }
-
-        if (parsedData?.base64) {
-          console.log(
-            "Image URL:",
-            `data:${parsedData.contentType};base64,${parsedData.base64}`
-          );
-          setUrl(`data:${parsedData.contentType};base64,${parsedData.base64}`);
-        } else {
-          console.error("No base64 data found in response");
-        }
-      } catch (error) {
-        console.error("Error fetching image:", error);
-      }
-    })();
-  }, []);
 
   return (
     <main className="p-4 md:p-8 lg:p-16">
@@ -103,13 +51,7 @@ const Projects = ({ data }: IProjects) => {
                 className={`relative group overflow-hidden rounded-lg shadow-lg ${spanClasses}`}
                 onClick={() => router.push(`/${project.projectName}`)}
               >
-                Palak
                 <img
-                  // src={`https://landscapearchitects1-my.sharepoint.com/personal/admin_landscapearchitects1_onmicrosoft_com/_layouts/15/download.aspx?SourceUrl=/personal/admin_landscapearchitects1_onmicrosoft_com/Documents/${project?.bannerImage.replace(
-                  //   / /g,
-                  //   "%20"
-                  // )}`}https://drive.google.com/file/d/1taN1UgN-f4ujlIkxLbm1c-KRsSj7Wa4T/view?usp=sharing
-                  // https://drive.google.com/file/d/1taN1UgN-f4ujlIkxLbm1c-KRsSj7Wa4T/view?usp=drive_link
                   src={
                     "https://firebasestorage.googleapis.com/v0/b/landscape-b3f1c.firebasestorage.app/o/Test%2FPawan%20Ji%20-%20Ground%20Floor%20Front%20Bedroom%20View%232.png?alt=media&token=4bd9ea34-d061-4b9b-b03d-838bf22da2d4"
                   }
