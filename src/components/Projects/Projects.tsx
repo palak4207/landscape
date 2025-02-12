@@ -108,9 +108,10 @@ const Projects = ({ data }: IProjects) => {
                   // src={`https://landscapearchitects1-my.sharepoint.com/personal/admin_landscapearchitects1_onmicrosoft_com/_layouts/15/download.aspx?SourceUrl=/personal/admin_landscapearchitects1_onmicrosoft_com/Documents/${project?.bannerImage.replace(
                   //   / /g,
                   //   "%20"
-                  // )}`}
+                  // )}`}https://drive.google.com/file/d/1taN1UgN-f4ujlIkxLbm1c-KRsSj7Wa4T/view?usp=sharing
+                  // https://drive.google.com/file/d/1taN1UgN-f4ujlIkxLbm1c-KRsSj7Wa4T/view?usp=drive_link
                   src={
-                    "https://drive.google.com/thumbnail?id=1hL8oP0nkdI2RIaq0egFQl-8B3QHMwigi&sz=w1000"
+                    "https://firebasestorage.googleapis.com/v0/b/landscape-b3f1c.firebasestorage.app/o/Test%2FPawan%20Ji%20-%20Ground%20Floor%20Front%20Bedroom%20View%232.png?alt=media&token=4bd9ea34-d061-4b9b-b03d-838bf22da2d4"
                   }
                   className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
                   width={500}
