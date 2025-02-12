@@ -120,9 +120,7 @@ const Projects = ({ data }: IProjects) => {
                     onClick={() => router.push(`/${project.projectName}`)}
                   >
                     <Image
-                      src={
-                        "https://res.cloudinary.com/dxpwhaebj/image/upload/v1734769041/homebyme-homepage-gallery-9_f7gawc.jpg"
-                      }
+                      src={project?.bannerImage}
                       alt={project.projectName || "Project Image"}
                       className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
                       width={500}

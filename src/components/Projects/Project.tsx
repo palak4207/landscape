@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 import { IProject } from "../common/interface";
+import Image from "next/image";
 
 interface IProjects {
   data: IProject;
@@ -63,7 +64,7 @@ const Project = ({ data, tags }: IProjects) => {
       <Header />
       {data && (
         <div className="relative w-full h-[calc(100vh-8rem)] overflow-hidden">
-          <img
+          <Image
             src={data?.bannerImage}
             alt={data?.bannerImage}
             className="w-full h-full object-cover"
@@ -124,7 +125,7 @@ const Project = ({ data, tags }: IProjects) => {
         >
           <div className="relative w-full h-[60vh] overflow-hidden rounded-lg shadow-lg">
             <div className="flex justify-center items-center h-full">
-              <img
+              <Image
                 src={selectedTaggedImage[currentIndex]?.url}
                 alt={selectedTaggedImage[currentIndex]?.url}
                 className="w-full h-full object-cover transition-all duration-500 ease-in-out"
