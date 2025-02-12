@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Project from "./Project";
 import { useRouter } from "next/navigation";
@@ -12,6 +12,58 @@ interface IProjects {
 const Projects = ({ data }: IProjects) => {
   const router = useRouter();
   const [showMore, setShowMore] = useState(false);
+  const [url, setUrl] = useState("");
+
+  // useEffect(() => {
+  //   (async () => {
+  //     const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/image`);
+  //     console.log("data", res);
+  //     const data = await res.json();
+
+  //     if (data.base64) {
+  //       console.log("urlll", `data:${data.contentType};base64,${data.base64}`);
+  //       setUrl(`data:${data.contentType};base64,${data.base64}`);
+  //     }
+  //     // setUrl(data);
+  //   })();
+  // }, []);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/image`
+        );
+
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+
+        const textData = await res.text(); // Get raw text response
+        console.log("Raw Response:", textData); // Check what data looks like
+
+        let parsedData;
+        try {
+          parsedData = JSON.parse(textData); // Try parsing JSON
+        } catch (err) {
+          throw new Error("Failed to parse JSON: ");
+        }
+
+        if (parsedData?.base64) {
+          console.log(
+            "Image URL:",
+            `data:${parsedData.contentType};base64,${parsedData.base64}`
+          );
+          setUrl(`data:${parsedData.contentType};base64,${parsedData.base64}`);
+        } else {
+          console.error("No base64 data found in response");
+        }
+      } catch (error) {
+        console.error("Error fetching image:", error);
+      }
+    })();
+  }, []);
+
   return (
     <main className="p-4 md:p-8 lg:p-16">
       <h1 className="text-center text-4xl tracking-widest">OUR PROJECTS</h1>
@@ -51,18 +103,19 @@ const Projects = ({ data }: IProjects) => {
                 className={`relative group overflow-hidden rounded-lg shadow-lg ${spanClasses}`}
                 onClick={() => router.push(`/${project.projectName}`)}
               >
+                Palak
                 <img
                   // src={`https://landscapearchitects1-my.sharepoint.com/personal/admin_landscapearchitects1_onmicrosoft_com/_layouts/15/download.aspx?SourceUrl=/personal/admin_landscapearchitects1_onmicrosoft_com/Documents/${project?.bannerImage.replace(
                   //   / /g,
                   //   "%20"
                   // )}`}
-                  src="https://res.cloudinary.com/dxpwhaebj/image/upload/v1734769041/homebyme-homepage-gallery-9_f7gawc.jpg"
-                  alt={project.projectName || "Project Image"}
+                  src={
+                    "https://drive.google.com/thumbnail?id=1hL8oP0nkdI2RIaq0egFQl-8B3QHMwigi&sz=w1000"
+                  }
                   className="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110"
                   width={500}
                   height={300}
                 />
-
                 {/* Conditional Overlay */}
                 <div className="absolute inset-0 bg-red-500 bg-opacity-75 flex flex-col items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <h2 className="text-white text-2xl font-bold">
