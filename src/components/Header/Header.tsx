@@ -26,14 +26,18 @@ const Header = () => {
             alt={"Logo"}
             width={60}
             height={60}
-            className={`w-8 h-8  ${route === "/contact" && "filter invert"}`}
+            className={`w-4 h-4 md:w-8 md:h-8  ${
+              route === "/contact" && "filter invert"
+            }`}
           />
           <Image
             src={"/logoText.png"}
             alt={"Logo Text"}
             width={120}
             height={50}
-            className={`w-auto h-7 ${route === "/contact" && "filter invert"}`}
+            className={`w-auto h-4 md:h-7 ${
+              route === "/contact" && "filter invert"
+            }`}
           />
         </div>
         <div>

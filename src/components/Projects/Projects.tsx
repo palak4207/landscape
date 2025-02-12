@@ -14,7 +14,9 @@ const Projects = ({ data }: IProjects) => {
 
   return (
     <main className="p-4 md:p-8 lg:p-16">
-      <h1 className="text-center text-4xl tracking-widest">OUR PROJECTS</h1>
+      <h1 className="text-center  text-2xl md:text-4xl tracking-widest">
+        OUR PROJECTS
+      </h1>
       <div className="text-center mb-6"></div>
 
       <div
