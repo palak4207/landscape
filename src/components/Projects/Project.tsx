@@ -59,7 +59,7 @@ const Project = ({ data, tags }: IProjects) => {
     if (selectedTag) {
       const intervalId = setInterval(() => {
         handleNext();
-      }, 5000);
+      }, 15000);
 
       return () => clearInterval(intervalId);
     }
