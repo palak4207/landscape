@@ -55,7 +55,7 @@ const Contact = () => {
           <div className="flex flex-col space-y-9 w-full lg:w-1/4 mt-6 lg:mt-0">
             <div className="flex flex-col items-start">
               <h2 className="text-md font-medium">WORKING HOURS</h2>
-              <p className="mt-2 text-sm">MON–FRI: 9:00 to 19:00</p>
+              <p className="mt-2 text-sm">MON–SAT: 11:00 to 18:00</p>
             </div>
             <div className="flex flex-col items-start">
               <h2 className="text-md font-medium">SOCIAL NETWORKS</h2>
