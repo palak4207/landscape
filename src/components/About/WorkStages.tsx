@@ -45,7 +45,7 @@ const WorkStages = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div className="relative flex justify-center items-center w-full h-screen px-4">
+    <div className="relative flex justify-center items-center w-full my-24 lg:h-screen px-4">
       <div
         className="relative w-full max-w-md sm:max-w-lg lg:max-w-3xl"
         style={{ aspectRatio: "1" }}

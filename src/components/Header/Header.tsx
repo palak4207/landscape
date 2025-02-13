@@ -4,10 +4,11 @@ import SocialIcons from "./SocialIcons";
 import Feedback from "./Feedback";
 import Sidebar from "./Sidebar";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Header = () => {
   const route = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="relative w-full">
@@ -20,7 +21,10 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-1">
+        <div
+          className="flex items-center space-x-1 cursor-pointer"
+          onClick={() => router.push("/")}
+        >
           <Image
             src={"/logo1.png"}
             alt={"Logo"}

@@ -18,7 +18,7 @@ const About = ({ teamInfo }: IAboutProps) => {
   return (
     <>
       <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen px-2">
+      <div className="flex flex-col items-center justify-center lg:min-h-screen px-2">
         <h1 className="text-2xl md:text-4xl text-center mb-6">
           HOME IS YOUR PERFECT UNIVERSE
         </h1>

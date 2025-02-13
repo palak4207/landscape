@@ -57,16 +57,16 @@ export default function Sidebar({ setIsOpen }: SidebarProps) {
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300`}
       >
-        <div className="items-center space-x-1 relative top-[6%]">
-          <div className="justify-items-center">
-            <Image
-              src={"/Landscape.png"}
-              alt={"Logo"}
-              width={250}
-              height={250}
-              className={`w-48 h-36 `}
-            />
-          </div>
+        <div className="flex justify-center items-center space-x-1 relative top-[6%]">
+          {/* <div className="justify-items-center"> */}
+          <Image
+            src={"/Landscape.png"}
+            alt={"Logo"}
+            width={250}
+            height={250}
+            className={`w-48 h-36 `}
+          />
+          {/* </div> */}
         </div>
         <button
           onClick={toggleSidebar}
