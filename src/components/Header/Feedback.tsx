@@ -90,7 +90,7 @@ const Feedback = ({ setIsOpen, isOpen }: FeedbackProps) => {
         >
           {/* Dialog Box */}
           <div
-            className={`bg-[#fafafa] text-black w-full max-w-2xl h-3/4 p-8 rounded-lg relative ${
+            className={`bg-[#fafafa] text-black w-full max-w-2xl h-fit p-8 rounded-lg relative ${
               route === "/contact" && "invert"
             }`}
             onClick={(e) => e.stopPropagation()}
