@@ -97,7 +97,7 @@ const Project = ({ data, tags }: IProjects) => {
 
             <div className="text-white">
               <p className="mb-2">
-                <strong>Square:</strong> {data?.area}
+                <strong>Total Area:</strong> {data?.area}sqft
               </p>
               <p className="mb-2">
                 <strong>City:</strong> {data?.city}
@@ -110,7 +110,7 @@ const Project = ({ data, tags }: IProjects) => {
 
           <div className="md:hidden absolute bottom-0 left-0 w-full bg-opacity-50 bg-black p-6 text-white font-bold text-center">
             {" "}
-            {data?.city} • {data?.area}m² • {data?.year}
+            {data?.city} • {data?.area}sqft • {data?.year}
           </div>
         </div>
       )}
@@ -176,8 +176,8 @@ const Project = ({ data, tags }: IProjects) => {
 
                 <div className="text-white">
                   <p className="mb-2">
-                    <strong>Area:</strong>{" "}
-                    {selectedTaggedImage[currentIndex]?.area}m²
+                    <strong>Size:</strong>{" "}
+                    {selectedTaggedImage[currentIndex]?.area}
                   </p>
                   <p className="mb-2">
                     <strong>Material Used:</strong>{" "}
@@ -188,7 +188,7 @@ const Project = ({ data, tags }: IProjects) => {
 
               <div className="md:hidden absolute bottom-0 left-0 w-full bg-opacity-50 bg-black p-6 text-white font-bold text-center">
                 {" "}
-                {selectedTag} • {selectedTaggedImage[currentIndex]?.area}m² •{" "}
+                {selectedTag} • {selectedTaggedImage[currentIndex]?.area} •{" "}
                 {selectedTaggedImage[currentIndex]?.materialUsed}
               </div>
 
@@ -247,8 +247,8 @@ const Project = ({ data, tags }: IProjects) => {
 
                 <div className="text-white">
                   <p className="mb-2">
-                    <strong>Area:</strong>{" "}
-                    {selectedTaggedImage[currentIndex]?.area}m²
+                    <strong>Size:</strong>{" "}
+                    {selectedTaggedImage[currentIndex]?.area}
                   </p>
                   <p className="mb-2">
                     <strong>Material Used:</strong>{" "}
@@ -259,7 +259,7 @@ const Project = ({ data, tags }: IProjects) => {
 
               <div className="md:hidden absolute bottom-0 left-0 w-full bg-opacity-50 bg-black p-6 text-white font-bold text-center">
                 {" "}
-                {selectedTag} • {selectedTaggedImage[currentIndex]?.area}m² •{" "}
+                {selectedTag} • {selectedTaggedImage[currentIndex]?.area} •{" "}
                 {selectedTaggedImage[currentIndex]?.materialUsed}
               </div>
 

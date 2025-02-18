@@ -65,7 +65,7 @@ const Projects = ({ data }: IProjects) => {
                     {project.projectName || "Project Title"}
                   </h2>
                   <p className="text-white mt-2 text-sm">
-                    {project.city || "City"} • {project.area || "Area"}m² •{" "}
+                    {project.city || "City"} • {project.area || "Area"}sqft •{" "}
                     {project.year || "Year"}
                   </p>
                 </div>
@@ -132,8 +132,8 @@ const Projects = ({ data }: IProjects) => {
                         {project.projectName || "Project Title"}
                       </h2>
                       <p className="text-white mt-2 text-sm">
-                        {project.city || "City"} • {project.area || "Area"}m² •{" "}
-                        {project.year || "Year"}
+                        {project.city || "City"} • {project.area || "Area"}sqft
+                        • {project.year || "Year"}
                       </p>
                     </div>
                   </div>
