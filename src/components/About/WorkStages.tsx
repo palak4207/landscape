@@ -45,7 +45,7 @@ const WorkStages = () => {
     return <div>Loading...</div>;
   }
   return (
-    <div className="relative flex justify-center items-center w-full my-24 lg:h-screen px-4">
+    <div className="relative flex justify-center items-center w-full my-24 px-4">
       <div
         className="relative w-full max-w-md sm:max-w-lg lg:max-w-3xl"
         style={{ aspectRatio: "1" }}
@@ -90,16 +90,27 @@ const WorkStages = () => {
                 left: "50%",
                 transform: (() => {
                   if (window.innerWidth >= 1568) {
+                    console.log("INNNNNNNN 1st");
                     // Large screens (lg)
-                    return `translate(-50%, -50%) rotate(${angle}deg) translateY(-24vw) rotate(-${angle}deg)`;
-                  }
-                  if (window.innerWidth >= 1024) {
+                    return `translate(-50%, -50%) rotate(${angle}deg) translateY(-22vw) rotate(-${angle}deg)`;
+                  } else if (window.innerWidth >= 1250) {
+                    console.log("INNNNNNNN 1st");
                     // Large screens (lg)
-                    return `translate(-50%, -50%) rotate(${angle}deg) translateY(-42vw) rotate(-${angle}deg)`;
+                    return `translate(-50%, -50%) rotate(${angle}deg) translateY(-28vw) rotate(-${angle}deg)`;
+                  } else if (window.innerWidth >= 1024) {
+                    console.log("INNNNNNNN 2nd");
+                    // Large screens (lg)
+                    return `translate(-50%, -50%) rotate(${angle}deg) translateY(-37vw) rotate(-${angle}deg)`;
+                  } else if (window.innerWidth >= 825) {
+                    console.log("INNNNNNNN 3rd");
+                    // Medium screens (md)
+                    return `translate(-50%, -50%) rotate(${angle}deg) translateY(-31vw) rotate(-${angle}deg)`;
                   } else if (window.innerWidth >= 768) {
+                    console.log("INNNNNNNN 3rd");
                     // Medium screens (md)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-40vw) rotate(-${angle}deg)`;
                   } else {
+                    console.log("INNNNNNNN 4th");
                     // Small screens (sm)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-45vw) rotate(-${angle}deg)`;
                   }

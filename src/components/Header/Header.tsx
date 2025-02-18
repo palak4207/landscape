@@ -12,7 +12,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="relative w-full">
-      <header className="py-6 px-6 flex items-center justify-between font-normal text-[14px] tracking-widest leading-[16px] font-sans pt-4 pr-6">
+      <header className="py-6 px-6 flex items-center justify-between font-normal text-[14px] bg-[#f1f1f1] tracking-widest leading-[16px] font-sans pt-4 pr-6">
         {/* Left Section: Sidebar and Social Icons */}
         <div className="flex items-center space-x-2">
           <Sidebar setIsOpen={setIsOpen} />
