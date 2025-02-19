@@ -53,7 +53,7 @@ export default function Sidebar({ setIsOpen }: SidebarProps) {
       </button>
 
       <div
-        className={`fixed top-0 left-0 h-full z-50 pb-8 w-[80%] sm:w-[60%] md:w-[40%] lg:w-[25%] bg-[#f1f5f9] text-center transform ${
+        className={`fixed top-0 left-0 h-full z-50 pb-8 w-[80%] sm:w-[60%] md:w-[40%] lg:w-[25%] bg-[#f1f5f9] text-center transform  ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300`}
       >
@@ -87,7 +87,7 @@ export default function Sidebar({ setIsOpen }: SidebarProps) {
             />
           </svg>
         </button>
-        <div className="flex h-full flex-col justify-center items-center font-extralight space-y-6 text-[#3F3A3A]">
+        <div className="flex h-full flex-col justify-center items-center font-extralight space-y-4 text-[#3F3A3A]">
           <ul className="space-y-10 text-3xl">
             <li>
               <Link

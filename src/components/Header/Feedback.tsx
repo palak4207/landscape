@@ -90,7 +90,7 @@ const Feedback = ({ setIsOpen, isOpen }: FeedbackProps) => {
         >
           {/* Dialog Box */}
           <div
-            className={`bg-[#fafafa] text-black w-full max-w-2xl h-fit p-8 rounded-lg relative ${
+            className={`bg-[#fafafa] text-black max-w-2xl p-8 m-4 rounded-lg relative ${
               route === "/contact" && "invert"
             }`}
             onClick={(e) => e.stopPropagation()}
@@ -98,7 +98,7 @@ const Feedback = ({ setIsOpen, isOpen }: FeedbackProps) => {
             <h1 className="text-center text-2xl font-light mb-8 tracking-wide">
               MAKE REQUEST
             </h1>
-            <form className="space-y-16 lg:space-y-24 ">
+            <form className="space-y-8 lg:space-y-12 ">
               <input
                 type="text"
                 name={"name"}

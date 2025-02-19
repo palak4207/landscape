@@ -8,21 +8,17 @@ const SocialIcons = () => {
     <div className="flex items-center ">
       <Link
         href="https://www.facebook.com/Architectureslandscape?rdid=Z3LFozy1pizDxUQL&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18k2ydYz2u%2F#"
-        className={`text-[#3F3A3A] hover:text-gray-900 pr-4 ${
-          route === "/contact" && "invert text-[#3F3A3A] hover:text-blue-600"
-        }`}
+        className={`text-[#3F3A3A] hover:text-gray-900 pr-4 `}
         target="blank"
       >
-        FB
+        <img src="/fbIcon.png" alt="icon" width={20} height={20} />
       </Link>
       <Link
         href="https://www.instagram.com/landscape_archist?igsh=eWo5dHNpdmd0cnY="
-        className={`text-[#3F3A3A] hover:text-gray-900 ${
-          route === "/contact" && "invert hover:text-blue-600"
-        }`}
+        className={`text-[#3F3A3A] hover:text-gray-900 `}
         target="blank"
       >
-        IN
+        <img src="/instagram.png" alt="icon" width={20} height={20} />
       </Link>
     </div>
   );

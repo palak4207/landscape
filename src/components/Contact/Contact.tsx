@@ -59,20 +59,20 @@ const Contact = () => {
             </div>
             <div className="flex flex-col items-start">
               <h2 className="text-md font-medium">SOCIAL NETWORKS</h2>
-              <div className="mt-2 space-x-4 text-sm">
+              <div className="mt-2 mb-4 space-x-4 text-sm flex">
                 <Link
                   href="https://www.facebook.com/Architectureslandscape?rdid=Z3LFozy1pizDxUQL&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F18k2ydYz2u%2F#"
                   className="hover:underline"
                   target="blank"
                 >
-                  Facebook
+                  <img src="/fbIcon.png" alt="icon" width={20} height={20} />
                 </Link>
                 <Link
                   href="https://www.instagram.com/landscape_archist?igsh=eWo5dHNpdmd0cnY="
                   className="hover:underline"
                   target="blank"
                 >
-                  Instagram
+                  <img src="/instagram.png" alt="icon" width={20} height={20} />
                 </Link>
               </div>
             </div>
