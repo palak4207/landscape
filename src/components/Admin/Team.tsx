@@ -36,6 +36,8 @@ const Team = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+
+          cache: "no-store",
         },
         body: JSON.stringify(formData),
       }

@@ -20,7 +20,7 @@ const About = ({ teamInfo }: IAboutProps) => {
       <Header />
       <div className="flex flex-col items-center justify-center lg:min-h-screen px-2">
         <h1 className="text-2xl md:text-4xl text-center my-8">
-          Designing Spaces Which Feel Like Home
+          Designing Spaces Which Feels Like Home
         </h1>
 
         <p className="text-lg md:text-xl text-center max-w-3xl mb-10">
