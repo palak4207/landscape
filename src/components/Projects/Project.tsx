@@ -21,7 +21,7 @@ const Project = ({ data, tags }: IProjects) => {
   };
 
   useEffect(() => {
-    if (selectedTag) {
+    if (selectedTag && selectedTaggedImage) {
       document
         .getElementById("carouselSection")
         ?.scrollIntoView({ behavior: "smooth" });
@@ -31,7 +31,7 @@ const Project = ({ data, tags }: IProjects) => {
         }
       });
     }
-  }, [selectedTag]);
+  }, [selectedTag, selectedTaggedImage]);
 
   const handleNext = () => {
     if (selectedTaggedImage?.length > 0) {
@@ -66,11 +66,17 @@ const Project = ({ data, tags }: IProjects) => {
     }
   }, [selectedTaggedImage.length]);
 
+  const formatMaterialUsed = (materialUsed: string) => {
+    return materialUsed
+      ?.split(",")
+      .map((item, index) => <div key={index}>{item.trim()}</div>);
+  };
+
   return (
     <div className="relative w-full h-screen">
       <Header />
       {data && (
-        <div className="relative w-full h-[calc(100vh-8rem)] overflow-hidden">
+        <div className="relative w-full overflow-hidden">
           <img
             src={data?.bannerImage}
             alt={data?.bannerImage}
@@ -136,10 +142,10 @@ const Project = ({ data, tags }: IProjects) => {
         selectedTag?.toLowerCase() !== "elevation" &&
         selectedTaggedImage && (
           <div
+            className="my-8 px-4 py-6 w-full max-w-6xl mx-auto rounded-lg shadow-lg"
             id="carouselSection"
-            className="mt-8 px-4 py-6 bg-white w-full max-w-6xl mx-auto rounded-lg shadow-lg"
           >
-            <div className="relative w-full h-[60vh] overflow-hidden rounded-lg shadow-lg">
+            <div className="relative w-full overflow-hidden rounded-lg shadow-lg">
               {!imageLoaded && (
                 <p className="absolute inset-0 flex items-center justify-center text-gray-500">
                   Loading...
@@ -150,7 +156,7 @@ const Project = ({ data, tags }: IProjects) => {
                 {selectedTaggedImage[currentIndex]?.url ? (
                   <img
                     src={selectedTaggedImage[currentIndex]?.url}
-                    alt={selectedTaggedImage[currentIndex]?.url}
+                    alt={`${selectedTag} image`}
                     width={400}
                     height={400}
                     onLoad={() => setImageLoaded(true)}
@@ -181,7 +187,12 @@ const Project = ({ data, tags }: IProjects) => {
                   </p>
                   <p className="mb-2">
                     <strong>Material Used:</strong>{" "}
-                    {selectedTaggedImage[currentIndex]?.materialUsed}
+                    <div>
+                      {formatMaterialUsed(
+                        selectedTaggedImage[currentIndex]?.materialUsed
+                      )}
+                    </div>
+                    {/* {selectedTaggedImage[currentIndex]?.materialUsed} */}
                   </p>
                 </div>
               </div>
@@ -192,18 +203,22 @@ const Project = ({ data, tags }: IProjects) => {
                 {selectedTaggedImage[currentIndex]?.materialUsed}
               </div>
 
-              <button
-                onClick={handlePrev}
-                className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black p-2 rounded-full cursor-pointer"
-              >
-                <span className="text-2xl">‹</span>
-              </button>
-              <button
-                onClick={handleNext}
-                className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white bg-black p-2 rounded-full cursor-pointer"
-              >
-                <span className="text-2xl">›</span>
-              </button>
+              {selectedTaggedImage?.length > 1 && (
+                <>
+                  <button
+                    onClick={handlePrev}
+                    className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black p-2 rounded-full cursor-pointer"
+                  >
+                    <span className="text-2xl">‹</span>
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white bg-black p-2 rounded-full cursor-pointer"
+                  >
+                    <span className="text-2xl">›</span>
+                  </button>
+                </>
+              )}
             </div>
           </div>
         )}
@@ -212,15 +227,15 @@ const Project = ({ data, tags }: IProjects) => {
         selectedTag?.toLowerCase() === "elevation" &&
         selectedTaggedImage && (
           <div
+            className="my-8 pt-4 pb-4 bg-white w-full max-w-2xl mx-auto rounded-lg shadow-lg"
             id="carouselSection"
-            className="mt-8 pt-4 bg-white w-full max-w-2xl mx-auto rounded-lg shadow-lg"
           >
-            <div className="relative w-full h-[60vh] overflow-hidden rounded-lg shadow-lg">
+            <div className="relative w-full  overflow-hidden rounded-lg shadow-lg">
               <div className="flex justify-center items-center h-full">
                 {selectedTaggedImage[currentIndex]?.url ? (
                   <img
                     src={selectedTaggedImage[currentIndex]?.url}
-                    alt={selectedTaggedImage[currentIndex]?.url}
+                    alt={`${selectedTag} image`}
                     width={400}
                     height={400}
                     className="w-full h-full object-contain transition-all duration-500 ease-in-out"
@@ -264,18 +279,22 @@ const Project = ({ data, tags }: IProjects) => {
               </div>
 
               {/* Carousel Buttons */}
-              <button
-                onClick={handlePrev}
-                className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black p-2 rounded-full cursor-pointer"
-              >
-                <span className="text-2xl">‹</span>
-              </button>
-              <button
-                onClick={handleNext}
-                className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white bg-black p-2 rounded-full cursor-pointer"
-              >
-                <span className="text-2xl">›</span>
-              </button>
+              {selectedTaggedImage?.length > 1 && (
+                <>
+                  <button
+                    onClick={handlePrev}
+                    className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black p-2 rounded-full cursor-pointer"
+                  >
+                    <span className="text-2xl">‹</span>
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white bg-black p-2 rounded-full cursor-pointer"
+                  >
+                    <span className="text-2xl">›</span>
+                  </button>
+                </>
+              )}
             </div>
           </div>
         )}
