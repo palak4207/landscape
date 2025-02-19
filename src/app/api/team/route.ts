@@ -6,7 +6,14 @@ export async function GET(req: NextRequest) {
   try {
     const { db } = await connectToDatabase();
     const items = await db.collection("teamMembers").find({}).toArray();
-    return new Response(JSON.stringify(items), { status: 200 });
+    return new Response(JSON.stringify(items), {
+      status: 200,
+      headers: {
+        "Cache-Control": "no-store",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    });
   } catch (error) {
     return new Response(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
