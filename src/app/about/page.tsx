@@ -7,7 +7,7 @@ const page = async () => {
     cache: "no-store",
   });
   const teamInfo: ITeamInfo[] = await data.json();
-  return <div>{teamInfo?.length > 0 && <About teamInfo={teamInfo} />}</div>;
+  return <div>{<About teamInfo={teamInfo} />}</div>;
 };
 
 export default page;
