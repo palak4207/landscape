@@ -18,18 +18,73 @@ const Feedback = ({ setIsOpen, isOpen }: FeedbackProps) => {
     location: "",
   });
 
+  // Updated errors type definition
+  const [errors, setErrors] = useState<Record<string, string>>({
+    name: "",
+    phone: "",
+    email: "",
+  });
+
   const onChangeHandler = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
+    const { name, value } = e.target;
+
+    // Clear error when user starts typing in the respective field
+    if (errors[name]) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: "", // Clear the error for the respective field
+      }));
+    }
+
     setFormData((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
   };
 
-  // api call to post feedback
+  // Validation function
+  const validateForm = () => {
+    let valid = true;
+    const newErrors: Record<string, string> = {
+      name: "",
+      phone: "",
+      email: "",
+    };
+
+    if (!formData.name) {
+      newErrors.name = "Name is required.";
+      valid = false;
+    }
+
+    if (!formData.phone) {
+      newErrors.phone = "Phone number is required.";
+      valid = false;
+    } else if (formData.phone.length !== 10) {
+      newErrors.phone = "Phone number must be 10 digits.";
+      valid = false;
+    }
+
+    // Email Validation
+    if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address.";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
+  // API call to post feedback
   const onSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+
+    // Validate the form
+    if (!validateForm()) {
+      return;
+    }
+
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_BASE_URL}/feedback`,
       {
@@ -107,6 +162,10 @@ const Feedback = ({ setIsOpen, isOpen }: FeedbackProps) => {
                 placeholder="Name"
                 className="w-full bg-[#fafafa] text-black border-b border-gray-700 outline-none focus:border-orange-500 transition duration-300 placeholder-gray-500"
               />
+              {errors.name && (
+                <p className="text-red-500 text-sm">{errors.name}</p>
+              )}
+
               <input
                 type="number"
                 name={"phone"}
@@ -115,6 +174,10 @@ const Feedback = ({ setIsOpen, isOpen }: FeedbackProps) => {
                 placeholder="Phone"
                 className="w-full bg-[#fafafa] text-black border-b border-gray-700 outline-none focus:border-orange-500 transition duration-300 placeholder-gray-500"
               />
+              {errors.phone && (
+                <p className="text-red-500 text-sm">{errors.phone}</p>
+              )}
+
               <input
                 type="email"
                 name={"email"}
@@ -123,6 +186,10 @@ const Feedback = ({ setIsOpen, isOpen }: FeedbackProps) => {
                 placeholder="E-mail"
                 className="w-full bg-[#fafafa] text-black border-b border-gray-700 outline-none focus:border-orange-500 transition duration-300 placeholder-gray-500"
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm">{errors.email}</p>
+              )}
+
               <input
                 type="text"
                 name={"location"}
