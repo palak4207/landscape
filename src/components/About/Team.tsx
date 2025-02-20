@@ -28,7 +28,8 @@ const Team = ({ teamInfo }: ITeamProps) => {
               <img
                 src={member.imageUrl}
                 alt={member.name}
-                className="w-full h-auto object-cover filter grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110"
+                height={300}
+                className="w-full object-fit filter grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110"
               />
               {/* Hover Overlay */}
               <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

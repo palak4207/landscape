@@ -90,27 +90,21 @@ const WorkStages = () => {
                 left: "50%",
                 transform: (() => {
                   if (window.innerWidth >= 1568) {
-                    console.log("INNNNNNNN 1st");
                     // Large screens (lg)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-22vw) rotate(-${angle}deg)`;
                   } else if (window.innerWidth >= 1250) {
-                    console.log("INNNNNNNN 1st");
                     // Large screens (lg)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-28vw) rotate(-${angle}deg)`;
                   } else if (window.innerWidth >= 1024) {
-                    console.log("INNNNNNNN 2nd");
                     // Large screens (lg)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-37vw) rotate(-${angle}deg)`;
                   } else if (window.innerWidth >= 825) {
-                    console.log("INNNNNNNN 3rd");
                     // Medium screens (md)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-31vw) rotate(-${angle}deg)`;
                   } else if (window.innerWidth >= 768) {
-                    console.log("INNNNNNNN 3rd");
                     // Medium screens (md)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-40vw) rotate(-${angle}deg)`;
                   } else {
-                    console.log("INNNNNNNN 4th");
                     // Small screens (sm)
                     return `translate(-50%, -50%) rotate(${angle}deg) translateY(-45vw) rotate(-${angle}deg)`;
                   }
