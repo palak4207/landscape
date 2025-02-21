@@ -14,7 +14,8 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "https://www.landscapearchitects.in/:path*",
+        destination:
+          "https://landscape-git-main-palak4207s-projects.vercel.app/api/:path*",
       },
     ];
   },
