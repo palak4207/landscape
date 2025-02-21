@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectToDatabase } from "@/../lib/mongodb";
 import cors from "@/context/Middleware";
+import { NextApiResponse } from "next";
 
 // Handle POST request
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest, res: NextApiResponse) {
   try {
     await cors(req, res);
     const data = await req.json();
