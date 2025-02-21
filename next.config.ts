@@ -16,7 +16,10 @@ const nextConfig: NextConfig = {
         source: "/api/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
-          { key: "Access-Control-Allow-Origin", value: "*" }, // Change * to your actual origin in production
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "https://www.landscapearchitects.in",
+          },
           {
             key: "Access-Control-Allow-Methods",
             value: "GET,DELETE,PATCH,POST,PUT",
