@@ -122,7 +122,7 @@ const Project = ({ data, tags }: IProjects) => {
       )}
 
       {/* Infinite Marquee */}
-      <div className="w-full bg-black text-white py-6 overflow-hidden text-center ">
+      <div className="w-full bg-black text-white py-6 overflow-scroll text-center ">
         <div className="whitespace-nowrap flex items-center space-x-8 animate-infinite-marquee">
           {tags.map((room: string, idx: number) => (
             <div
