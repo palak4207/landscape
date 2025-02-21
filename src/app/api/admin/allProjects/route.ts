@@ -4,9 +4,8 @@ import cors from "@/context/Middleware";
 import { NextApiResponse } from "next";
 
 // Handle GET request
-export async function GET(req: NextRequest, res: NextApiResponse) {
+export async function GET() {
   try {
-    await cors(req, res);
     const { db } = await connectToDatabase();
     const items = await db.collection("projects").find({}).toArray();
     return new Response(JSON.stringify(items), { status: 200 });
