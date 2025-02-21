@@ -10,21 +10,30 @@ const nextConfig: NextConfig = {
     ], // Add hostnames here
   },
 
-  async headers() {
+  async rewrites() {
     return [
       {
         source: "/api/:path*",
-        headers: [
-          { key: "Access-Control-Allow-Credentials", value: "true" },
-          { key: "Access-Control-Allow-Origin", value: "*" },
-          {
-            key: "Access-Control-Allow-Methods",
-            value: "GET,DELETE,PATCH,POST,PUT",
-          },
-        ],
+        destination: "http://localhost:3000/:path*",
       },
     ];
   },
+
+  // async headers() {
+  //   return [
+  //     {
+  //       source: "/api/:path*",
+  //       headers: [
+  //         { key: "Access-Control-Allow-Credentials", value: "true" },
+  //         { key: "Access-Control-Allow-Origin", value: "*" },
+  //         {
+  //           key: "Access-Control-Allow-Methods",
+  //           value: "GET,DELETE,PATCH,POST,PUT",
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
   /* config options here */
 };
 
