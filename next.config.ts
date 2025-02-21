@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
       {
         source: "/api/:path*",
         destination:
-          "https://landscape-git-main-palak4207s-projects.vercel.app/api/:path*",
+          "https://landscape-git-main-palak4207s-projects.vercel.app/:path*",
       },
     ];
   },
