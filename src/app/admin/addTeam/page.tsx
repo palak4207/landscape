@@ -1,10 +1,10 @@
-import Team from "@/components/Admin/Team";
+import AddTeamForm from "@/components/Admin/AddTeamForm";
 import React from "react";
 
 const page = async () => {
   return (
     <div>
-      <Team />
+      <AddTeamForm />
     </div>
   );
 };

@@ -27,7 +27,7 @@ const Home = () => {
         <button
           type="button"
           className="w-full bg-blue-600  text-white py-3 px-6 rounded-md shadow-md  focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300 ease-in-out transform hover:scale-105"
-          onClick={() => router.push("/admin/team")}
+          onClick={() => router.push("/admin/addTeam")}
         >
           Add Team Member
         </button>
@@ -44,6 +44,13 @@ const Home = () => {
           onClick={() => router.push("/admin/projects")}
         >
           Projects
+        </button>
+        <button
+          type="button"
+          className="w-full bg-blue-600  text-white py-3 px-6 rounded-md shadow-md  focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300 ease-in-out transform hover:scale-105"
+          onClick={() => router.push("/admin/teams")}
+        >
+          Team Member
         </button>
       </div>
     </div>

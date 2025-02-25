@@ -57,7 +57,7 @@ export async function PUT(req: NextRequest) {
   }
 }
 
-// Handle PUT request to update project details
+// Handle DELETE req
 export async function DELETE(req: NextRequest) {
   try {
     const data = await req.json();
