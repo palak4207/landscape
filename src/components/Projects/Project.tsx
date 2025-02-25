@@ -6,11 +6,11 @@ import { IProject } from "../common/interface";
 
 interface IProjects {
   data: IProject;
-  tags: [];
+  tags: string[];
 }
 
 const Project = ({ data, tags }: IProjects) => {
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
+  const [selectedTag, setSelectedTag] = useState<string>(tags[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedTaggedImage, setSelectedTaggedImage] = useState<any>([]);
   const [loaded, setLoaded] = useState(false);
