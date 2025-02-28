@@ -15,6 +15,7 @@ const Project = ({ data, tags }: IProjects) => {
   const [selectedTaggedImage, setSelectedTaggedImage] = useState<any>([]);
   const [loaded, setLoaded] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
 
   const handleMarqueeClick = (tag: string) => {
     setSelectedTag(tag);
@@ -22,9 +23,9 @@ const Project = ({ data, tags }: IProjects) => {
 
   useEffect(() => {
     if (selectedTag && selectedTaggedImage) {
-      document
-        .getElementById("carouselSection")
-        ?.scrollIntoView({ behavior: "smooth" });
+      // document
+      //   .getElementById("carouselSection")
+      //   ?.scrollIntoView({ behavior: "smooth" });
       data?.tags?.map((img) => {
         if (img?.tagName === selectedTag) {
           setSelectedTaggedImage(img?.images);
@@ -70,6 +71,10 @@ const Project = ({ data, tags }: IProjects) => {
     return materialUsed
       ?.split(",")
       .map((item, index) => <div key={index}>{item.trim()}</div>);
+  };
+
+  const toggleOverlay = () => {
+    setIsOverlayVisible((prev) => !prev);
   };
 
   return (
@@ -160,6 +165,7 @@ const Project = ({ data, tags }: IProjects) => {
                     width={400}
                     height={400}
                     onLoad={() => setImageLoaded(true)}
+                    onClick={toggleOverlay}
                     className="w-full h-full object-fill transition-all duration-500 ease-in-out"
                   />
                 ) : (
@@ -197,11 +203,49 @@ const Project = ({ data, tags }: IProjects) => {
                 </div>
               </div>
 
-              <div className="md:hidden absolute bottom-0 left-0 w-full bg-opacity-50 bg-black p-6 text-white font-bold text-center">
-                {" "}
-                {selectedTag} • {selectedTaggedImage[currentIndex]?.area} •{" "}
-                {selectedTaggedImage[currentIndex]?.materialUsed}
-              </div>
+              {/* Conditional Overlay */}
+
+              {isOverlayVisible && (
+                <div className="md:hidden absolute inset-0 bg-black bg-opacity-75 flex flex-col  justify-center transition-opacity duration-300 px-6 py-8">
+                  {/* Close Button at the Top */}
+                  <button
+                    onClick={() => setIsOverlayVisible(false)}
+                    className="absolute top-4 right-4 p-2 bg-white rounded-full"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      className="size-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18 18 6M6 6l12 12"
+                      />
+                    </svg>
+
+                    {/* HeroIcon SVG */}
+                  </button>
+
+                  {/* Overlay Content (Centered) */}
+                  <h2 className="text-white text-lg font-bold mb-4">
+                    {selectedTag}
+                  </h2>
+                  <p className="text-white text-sm mb-2">
+                    <strong>Size:</strong>{" "}
+                    {selectedTaggedImage[currentIndex]?.area} sqft
+                  </p>
+                  <p className="text-white text-sm">
+                    <strong>Material Used:</strong>{" "}
+                    {formatMaterialUsed(
+                      selectedTaggedImage[currentIndex]?.materialUsed
+                    )}
+                  </p>
+                </div>
+              )}
 
               {selectedTaggedImage?.length > 1 && (
                 <>
@@ -238,6 +282,7 @@ const Project = ({ data, tags }: IProjects) => {
                     alt={`${selectedTag} image`}
                     width={400}
                     height={400}
+                    onClick={toggleOverlay}
                     className="w-full h-full object-contain transition-all duration-500 ease-in-out"
                   />
                 ) : (
@@ -272,11 +317,49 @@ const Project = ({ data, tags }: IProjects) => {
                 </div>
               </div>
 
-              <div className="md:hidden absolute bottom-0 left-0 w-full bg-opacity-50 bg-black p-6 text-white font-bold text-center">
-                {" "}
-                {selectedTag} • {selectedTaggedImage[currentIndex]?.area} •{" "}
-                {selectedTaggedImage[currentIndex]?.materialUsed}
-              </div>
+              {/* Conditional Overlay */}
+
+              {isOverlayVisible && (
+                <div className="md:hidden absolute inset-0 bg-black bg-opacity-75 flex flex-col  justify-center transition-opacity duration-300 px-6 py-8">
+                  {/* Close Button at the Top */}
+                  <button
+                    onClick={() => setIsOverlayVisible(false)}
+                    className="absolute top-4 right-4 p-2 bg-white rounded-full"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      className="size-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6 18 18 6M6 6l12 12"
+                      />
+                    </svg>
+
+                    {/* HeroIcon SVG */}
+                  </button>
+
+                  {/* Overlay Content (Centered) */}
+                  <h2 className="text-white text-lg font-bold mb-4">
+                    {selectedTag}
+                  </h2>
+                  <p className="text-white text-sm mb-2">
+                    <strong>Size:</strong>{" "}
+                    {selectedTaggedImage[currentIndex]?.area} sqft
+                  </p>
+                  <p className="text-white text-sm">
+                    <strong>Material Used:</strong>{" "}
+                    {formatMaterialUsed(
+                      selectedTaggedImage[currentIndex]?.materialUsed
+                    )}
+                  </p>
+                </div>
+              )}
 
               {/* Carousel Buttons */}
               {selectedTaggedImage?.length > 1 && (
